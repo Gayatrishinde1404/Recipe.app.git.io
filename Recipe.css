@@ -1,0 +1,296 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root{
+    --tenne-tawny : #d65108;
+    --tenne-tawny-dark : #b54507;
+}
+
+body{
+    font-weight: 300;
+    font-size: 1.05rem;
+    line-height: 1.6;
+    font-family: 'poppins',sans-serif;
+}
+
+/* */
+.btn{
+    font-family: 'inherit';
+    cursor: pointer;
+    outline: 0;
+    font-size: 1.05rem;
+}
+.text{
+    opacity: 0.8;
+}
+.title{
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+/* */
+.container{
+   min-height: 100vh;
+}
+.meal-wrapper{
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 2rem 1.5rem;
+    background: #fff;
+    text-align: center;  
+}
+.meal-search{
+    margin: 2rem 0;
+}
+.meal-search cite{
+    font-size: 1rem;
+}
+.meal-search-box{
+    margin: 1.2rem 0;
+    display: flex;
+    align-items: stretch ;
+}
+.search-control,
+.search-btn{
+    width: 100%; 
+}
+.search-control{
+    padding: 0 1rem;
+    font-size: 1.1rem;
+    font-family: 'inherit';
+    outline: 0;
+    border: 1px solid var(--tenne-tawny);
+    color: var(--tenne-tawny);
+    border-top-left-radius: 2rem;
+    border-bottom-left-radius: 2rem;
+}
+.search-control::placeholder{
+    color: var(--tenne-tawny);
+}
+.search-btn{
+    width: 55px;
+    height: 55px;
+    font-size: 1.8rem;
+    background: var(--tenne-tawny);
+    color: #fff;
+    border: none;
+    border-top-right-radius: 2rem;
+    border-bottom-right-radius: 2rem;
+    transition: all 0.4s linear;
+}
+.search-btn:hover{
+    background: var(--tenne-tawny-dark);
+}
+.meal-result{
+    margin-top: 4rem;
+}
+#meal{
+    display: grid;
+    grid-template-columns: repeat(1, 1fr); /* Initially 1 column for small screens */
+    gap: 1rem;
+    margin: 2.4rem 0;
+    padding: 0 2rem;
+}
+.meal-item{
+    border-radius: 1rem;
+    overflow: hidden;
+    box-shadow: 0 4px 21px -12px rgba(0, 0, 0, 0.79);
+    margin: 0 auto; /* Center on smaller screens */
+    width: 100%; /* Full width initially */
+    max-width: 350px; /* Limit card size */
+}
+.meal-img img{
+    width: 100%;
+    display: block;
+}
+.meal-name{
+    padding: 1.5rem 0.5rem;
+}
+.meal-name h3{
+    font-size: 1.4rem;
+}
+.recipe-btn{
+    text-decoration: none;
+    color: #fff;
+    background: var(--tenne-tawny);
+    font-weight: 500;
+    font-size: 1.1rem;
+    padding: 0.75rem 0;
+    display: block;
+    width: 175px;
+    margin: 1rem auto;
+    border-radius: 2rem;
+    transition: all 0.4s linear;
+}
+.recipe-btn:hover{
+    background: var(--tenne-tawny-dark);
+}
+.meal-details img {
+    max-width: 100%; /* Ensures the image doesn't exceed the container's width */
+    height: auto;    /* Maintains aspect ratio */
+    max-height: 400px; /* Limit the height for a more proportional size */
+    display: block;  /* Ensures proper alignment */
+    margin: 0 auto;  /* Centers the image horizontally */
+}
+
+/* Updated meal-details */
+.meal-details{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #fff;
+    background: var(--tenne-tawny);
+    border-radius: 1rem;
+    width: 70%; /* Reduced width */
+    height: 90%; /* Reduced height */
+    max-width: 500px; /* Set a max-width for better control */
+    max-height: 600px; /* Set a max-height for better control */
+    display: none;
+    overflow-y: auto; /* Auto to handle scroll if needed */
+    padding: 1.5rem; /* Reduced padding */
+ }
+
+
+
+/* Scrollbar styling */
+.meal-details::-webkit-scrollbar {
+    width: 10px;
+}
+
+.meal-details::-webkit-scrollbar-thumb {
+    background: #f0f0f0;
+    border-radius: 2rem;
+}
+
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .meal-details{
+        width: 95%; /* Adjust width for smaller screens */
+        height: 85%; /* Adjust height for smaller screens */
+        max-width: 100%; /* Remove max-width limitation */
+        max-height: 90%; /* Adjust max-height for better responsiveness */
+    }
+}
+
+/* js related */
+.showRecipe{
+    display: block;
+}
+
+.meal-details-content{
+    margin: 2rem;
+}
+
+.meal-details-content p:not(.recipe-catagory) {
+    font-size: 0.65rem; /* Reduced to 0.7rem for a smaller size */
+    line-height: 1.2; /* Adjusted line height for better readability */
+    padding: 1rem 0;
+}
+
+.recipe-close-btn{
+    position: absolute;
+    right: 2rem;
+    top: 2rem;
+    font-size: 1.8rem;
+    background: #fff;
+    border: none;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0.9;
+}
+.recipe-title{
+    letter-spacing: 1px;
+    padding-bottom: 1rem;
+}
+.recipe-category {
+    background: #fff; 
+    font-weight: 600;
+    color: var(--tenne-tawny); 
+    display: inline-block; 
+    padding: 0.1rem 0.3rem; /* Reduce padding for a tighter fit */
+    border-radius: 0.3rem; 
+    line-height: normal; /* Use normal line height for tight fitting */
+}
+
+
+.recipe-instruct{
+    padding: 1rem 0;
+}
+.recipe-meal-img img{
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin: 0 auto;
+    display: block;
+}
+.recipe-link{
+    margin: 1.4rem 0;
+}
+
+
+.recipe-link a{
+    color: #fff;
+    font-size: 1.2rem;
+    font-weight: 700;
+    transition: all 0.4s linear;
+}
+.recipe-link a:hover{
+    opacity: 0.8;
+}
+
+
+/**/
+
+ .notFound{
+     grid-template-columns: 1fr!important;
+     color: var(--tenne-tawny);
+     font-size: 1.8rem;
+     font-weight: 600;
+     width: 100%;
+ }
+
+
+/*Media Queries*/
+@media screen and (min-width: 600px) {
+    .meal-search-box {
+        width: 540px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    #meal {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem; /* Two items per row on tablets */
+        padding: 0 3rem;
+    }
+    .meal-item {
+        height: auto; /* Adjust height dynamically */
+    }
+    .meal-details{
+        width: 700px;
+    }
+}
+
+@media screen and (min-width: 992px) {
+    #meal {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1rem;
+        padding: 0 5rem; 
+    }
+    .meal-item {
+        height: auto; /* Adjust height dynamically */
+    }
+}
